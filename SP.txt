@@ -1,0 +1,15 @@
+CREATE PROC crystal_sp_subcontracting
+@DocKey int
+AS
+ SELECT 
+ T0.DocNum [OrderNo],
+ T0.DocDate [OrderDate],
+ CAST('' AS Varchar(100)) RefNo,
+  CAST('' AS Varchar(100)) DeliveryChallanNo,
+ T0.DocDate [DeliveryChallanDate],
+ T1.Dscription ,
+ T1.Quantity,T1.PriceBefDi,
+ '27920910757V' [GSTNo]
+ FROM OIGE T0
+ INNER JOIN IGE1  T1 ON T0.DocEntry = T1.DocEntry
+WHERE T0.DocEntry = @DocKey 
